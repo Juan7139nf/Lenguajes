@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C#</title>    
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <h1>C#</h1>
+    <h2>La serie Fibonacci</h2>
+    <p>// Fibonacci<br>static int SoloNumeros(String mensaje)<br>{<br> &nbsp;&nbsp;&nbsp;&nbsp;int numero;<br> &nbsp;&nbsp;&nbsp;&nbsp;while (true)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;try<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.White;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Write(mensaje);<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;numero = int.Parse(Console.ReadLine());<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;break;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;catch<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.DarkRed;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Debe ingresar solo numeros...");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;return numero;<br>}<br>static int Menu(String mensage, int inicio = 1, int fin = 4)<br>{<br> &nbsp;&nbsp;&nbsp;&nbsp;int posicion;<br> &nbsp;&nbsp;&nbsp;&nbsp;do<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.Yellow;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("============================================");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(mensage);<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("============================================");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;posicion = SoloNumeros("\nNumero de posicion de la serie Fibonacci? ");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;break;<br> &nbsp;&nbsp;&nbsp;&nbsp;} while (true);<br> &nbsp;&nbsp;&nbsp;&nbsp;return posicion;<br>}<br>static void fibonacci(int n)<br>{<br> &nbsp;&nbsp;&nbsp;&nbsp;int a = 0, b = 1, f = 1;<br> &nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= n; i++)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("{0} : {1}", i, f);<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;f = a + b;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;a = b;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;b = f;<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br>}<br>// Principal<br>int n;<br>do<br>{<br> &nbsp;&nbsp;&nbsp;&nbsp;int n1 = 1, n2 = 1, respuesta = 0;<br><br> &nbsp;&nbsp;&nbsp;&nbsp;n = Menu("Posicion de la serie Fibonacci\nNumero negativo para salir");<br> &nbsp;&nbsp;&nbsp;&nbsp;if (n &lt; 0)<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;break;<br> &nbsp;&nbsp;&nbsp;&nbsp;if (n == 0)<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("0");<br> &nbsp;&nbsp;&nbsp;&nbsp;else<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;fibonacci(n);<br> &nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;Console.ReadKey();<br> &nbsp;&nbsp;&nbsp;&nbsp;Console.Clear();<br>} while (true);<br>Console.ForegroundColor = ConsoleColor.DarkRed;<br>Console.WriteLine("\nHasta luego...");</p>
+    <br>
+    <h2>El Factorial, Combinaciones sin repeticion y con repeticion</h2>
+    <p>// Factorial y Combinaciones<br>static int Menu(string mensaje, int inicial, int final)<br>{<br> &nbsp;&nbsp;&nbsp;&nbsp;int opcion;<br> &nbsp;&nbsp;&nbsp;&nbsp;do<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.Yellow;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("############ MENU ############");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine(mensaje);<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("##############################");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Introduce una opcion entre el {0} al {1}?", inicial, final);<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.Green;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;opcion = int.Parse(Console.ReadLine());<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;if (opcion &lt; inicial || opcion > final)<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("La opcion debe estar entre {0} al {1}...", inicial, final);<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ReadKey();<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Clear();<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;else<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;break;<br> &nbsp;&nbsp;&nbsp;&nbsp;} while (true);<br> &nbsp;&nbsp;&nbsp;&nbsp;return opcion;<br>}<br><br>static long Factorial(double numero = 1)<br>{<br> &nbsp;&nbsp;&nbsp;&nbsp;long resultado = 1;<br> &nbsp;&nbsp;&nbsp;&nbsp;if (numero &lt; 0)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("No existe faltorial para numeros negativos"); &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;resultado = -1;<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;else if (numero > 1)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;for (int i = 1; i &lt;= numero; i++)<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;resultado *= i; // resultado = resultado * i<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;return resultado;<br>}<br><br>// Programa principal<br>string mensaje = ("1) Factorial del número\n2) Combinaciones sin repeticion\n3) Combinaciones con repeticion\n4) Salir");<br>int opcion;<br>do<br>{<br><br> &nbsp;&nbsp;&nbsp;&nbsp;double numero = 0;<br> &nbsp;&nbsp;&nbsp;&nbsp;double numero1 = 0;<br> &nbsp;&nbsp;&nbsp;&nbsp;opcion = Menu(mensaje, 1, 4);<br> &nbsp;&nbsp;&nbsp;&nbsp;if (opcion &gt; 1 && opcion &lt; 4)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.White;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Write("Cuantos elementos necesita? ");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.DarkMagenta;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;numero = double.Parse(Console.ReadLine());<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.White;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Write("Cuanto debe ser el grupo? ");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.DarkMagenta;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;numero1 = double.Parse(Console.ReadLine());<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;if (opcion == 1)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.White;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Write("Introduce número? ");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ForegroundColor = ConsoleColor.DarkMagenta;<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;numero = double.Parse(Console.ReadLine());<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("{0}! = {1}", numero, Factorial(numero));<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ReadKey();<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Clear();<br> &nbsp;&nbsp;&nbsp;&nbsp;} &nbsp;&nbsp;&nbsp;&nbsp;else if (opcion == 2)<br> &nbsp;&nbsp;&nbsp;&nbsp;{ &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("C(n,r) = n! / r!·(n - r)!\nC({0},{1}) = {0}! / {1}!·({0} - {1})! = {2}\nSe puede hacer {2} Combinaciones sin repeticiones", numero, numero1, Factorial(numero) / (Factorial(numero1) * (Factorial(numero - numero1))));<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ReadKey();<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Clear();<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;else if (opcion == 3)<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("C(n,r) = (n + r - 1)! / r!·(n - 1)!\nC({0},{1}) = ({0} + {1} - 1)! / {1}!·({0} - 1)! = {2}\nSe puede hacer {2} Combinaciones con repeticiones", numero, numero1, Factorial(numero + numero1 - 1) / (Factorial(numero1) * (Factorial(numero - 1))));<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.ReadKey();<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.Clear();<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br> &nbsp;&nbsp;&nbsp;&nbsp;else<br> &nbsp;&nbsp;&nbsp;&nbsp;{<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;Console.WriteLine("Hasta Luego...");<br> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;break;<br> &nbsp;&nbsp;&nbsp;&nbsp;}<br>} while (true);</p>
+    <br>
+    <h2>Menu interactivo</h2>
+    <pre><code>do
+{
+    int opcion;
+    Console.WriteLine("1. opcion 1\n2. opcion 2\n3. opcion 3\n4. Salir");
+    opcion = int.Parse(Console.ReadLine());
+    if (opcion == 1)
+        Console.WriteLine("Opcion 1");
+    else if (opcion == 2)
+    {
+        Console.WriteLine("Opcion 2");
+    }
+    else if (opcion == 3)
+    {
+        Console.WriteLine("Opcion 3");
+    }
+    else if (opcion == 4)
+    {
+        Console.WriteLine("Hasta Luego...");
+        break;
+    }
+    else
+        Console.WriteLine("La opcion {0} no es valida", opcion);
+    Console.ReadKey();
+    Console.Clear();
+} while (true);</code></pre>
+    <br>
+    <h2>Metodos</h2>
+    <pre><code>static void Numero(out double n)
+{
+    Console.Write("Introduce numero? ");
+    n = double.Parse(Console.ReadLine());
+}
+
+static long Factorial(double n = 1)
+{
+    long resultado = 1;
+    if (n < 0)
+    {
+        Console.WriteLine("No existe faltorial para numeros negativos");
+        resultado = -1;
+    }
+    else if (n > 1)
+    {
+        for (int i = 1; i <= n; i++)
+            resultado *= i; // resultado = resultado * i
+    }
+    return resultado;
+}
+
+do
+{
+    double opcion, n = 0;
+    Console.WriteLine("1. opcion 1\n2. Factorial\n3. Salir");
+    opcion = double.Parse(Console.ReadLine());
+    if (opcion == 1)
+        Console.WriteLine("Opcion 1");
+    else if (opcion == 2)
+    {
+        Numero(out n);
+        Console.WriteLine("{0}! = {1}", n, Factorial(n));
+    }
+    else if (opcion == 3)
+    {
+        Console.WriteLine("Hasta Luego...");
+        break;
+    }
+    else
+        Console.WriteLine("La opcion {0} no es valida", opcion);
+    Console.ReadKey();
+    Console.Clear();
+} while (true);
+    </code></pre>
+
+</body>
+</html>
