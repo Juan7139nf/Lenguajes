@@ -366,5 +366,225 @@ while (true)
     Console.Clear();
 }
     </code></pre>
+    <h2>CADENAS</h2>
+    <h2>Ejercicio1</h2>
+    <pre><code>
+int opcion;
+do
+{
+    Console.WriteLine("1) Texto y subtexto indicar indice de ocurrencia\n2) Texto y subtexto indicar cantidad de ocurrencia\n3) Texto indicar cantidad de vocales, $%^&# y espacios\n4) Texto numeros, letras y letras en mayusculas\n5) Texto desplegar cada palabra\n6) Salir");
+    opcion = int.Parse(Console.ReadLine());
+    if (opcion == 1)
+    {
+        OcurrenciasTexto();
+    }
+    else if (opcion == 2)
+    {
+        OcurrenciasTexto(false);
+    }
+    else if (opcion == 3)
+    {
+        CantidadOpcion3();
+    }
+    else if (opcion == 4)
+    {
+        CantidadOpcion4();
+    }
+    else if (opcion == 5)
+    {
+        TextoPalabras();
+    }
+    else if (opcion == 6)
+    {
+        Console.WriteLine("Hasta luego...");
+        break;
+    }
+    Console.ReadKey();
+    Console.Clear();
+} while (true);
+
+static void OcurrenciasTexto(bool indice = true)
+{
+    string texto, subtexto;
+    int idx = 0, cantidad = 0;
+    Console.WriteLine("Introduce un texto cualquiera? ");
+    texto = Console.ReadLine();
+    Console.WriteLine("Introduce un subtexto cualquiera? ");
+    subtexto = Console.ReadLine();
+    if (indice)
+    {
+        idx = texto.IndexOf(subtexto);
+        while (idx != -1)
+        {
+            Console.WriteLine("Aparece en el indice {0} o en la posicion {1}", idx, idx + 1);
+            idx = texto.IndexOf(subtexto, idx + 1);
+        }
+    }
+    else
+    {
+        idx = texto.IndexOf(subtexto);
+        while (idx != -1)
+        {
+            cantidad++;
+            idx = texto.IndexOf(subtexto, idx + 1);
+        }
+        Console.WriteLine("Aparece {0} veces...", cantidad);
+    }
+
+}
+
+static void CantidadOpcion3()
+{
+    string texto;
+    int canVocales = 0, canEspeciales = 0, cantEspacios = 0;
+    Console.WriteLine("Introduce un texto cualquiera? ");
+    texto = Console.ReadLine();
+    foreach (char c in texto.ToUpper())
+    {
+        if (char.IsWhiteSpace(c))
+            cantEspacios++;
+        else if (c == '$' || c == '%' || c == '^' || c == '&' || c == '#')
+            canEspeciales++;
+        else if (c == 'A' || c == 'E' || c == 'I' || c == 'O' || c == 'U')
+            canVocales++;
+    }
+    Console.WriteLine("Cantidad de vocales: {0}\nCantidad $%^&#: {1}\nCantidad espacios: {2}", canVocales, canEspeciales, cantEspacios);
+}
+
+static void CantidadOpcion4()
+{
+    string texto;
+    int canNumeros = 0, canLetras = 0, cantLetrasMay = 0;
+    Console.WriteLine("Introduce un texto cualquiera? ");
+    texto = Console.ReadLine();
+    foreach (char c in texto)
+    {
+        if (char.IsNumber(c))
+            canNumeros++;
+        if (char.IsLetter(c))
+            canLetras++;
+        if (char.IsUpper(c))
+            cantLetrasMay++;
+    }
+    Console.WriteLine("Cantidad numeros: {0}\nCantidad letras: {1}\nCantidad letras mayusculas: {2}", canNumeros, canLetras, cantLetrasMay);
+}
+
+static void TextoPalabras()
+{
+    string texto;
+    string[] palabras;
+    Console.WriteLine("Introduce un texto cualquiera? ");
+    texto = Console.ReadLine();
+    palabras = texto.Split(' ');
+    foreach (string palabra in palabras)
+        Console.WriteLine(palabra);
+    Console.WriteLine("Tiene {0} palabras...", palabras.Length);
+}
+    </code></pre>
+    <h2>Ejercicio2</h2>
+    <pre><code>
+int opcion;
+int[] arr;
+do
+{
+    Console.WriteLine("1) Generar un arreglo de 5 elmentos valores (-15,15) orden descendente\n2) Generar un arreglo 9 elementos (-20,15) orden ascendente manual\n3) Generar un arreglo 10 elementos valores (0,100) indicar el valor maximo, minimo y promedio\n4) Salir\n5) orden descendente manual");
+    opcion = int.Parse(Console.ReadLine());
+    if (opcion == 1)
+    {
+        arr = GenerarArreglo(5, -15, 15);
+        OrdenDescendente(arr);
+    }
+    else if (opcion == 2)
+    {
+        arr = GenerarArreglo(8, -20, 15);
+        OrdenAscendente(arr);
+    }
+    else if(opcion == 5)
+    {
+        arr = GenerarArreglo(10, -20, 15);
+        Ordendescendente(arr);
+    }
+    else if (opcion == 3)
+    {
+        arr = GenerarArreglo(10);
+        ArregloMayMenPro(arr);
+    }
+    else if (opcion == 4)
+    {
+        break;
+    }
+    Console.ReadKey();
+    Console.Clear();
+} while (true);
+
+static void OrdenDescendente(int[] arreglo)
+{
+    Array.Sort(arreglo);
+    Array.Reverse(arreglo);
+    Console.WriteLine("Orden descendente: ");
+    foreach (int i in arreglo)
+        Console.Write(i + " ");
+}
+static void OrdenAscendente(int[] arreglo)
+{
+    int aux = 0;
+    for (int i = 0; i < arreglo.Length; i++)
+    {
+        for (int j = i + 1; j < arreglo.Length; j++)
+        {
+            if (arreglo[j] < arreglo[i])
+            {
+                aux = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = aux;
+            }
+        }
+    }
+    Console.WriteLine("Ordenado Ascendentemente:");
+    foreach (int a in arreglo)
+        Console.Write(a + " ");
+
+}
+
+static void Ordendescendente(int[] arreglo)
+{
+    int aux = 0;
+    for (int i = 0; i < arreglo.Length; i++)
+    {
+        for (int j = i + 1; j < arreglo.Length; j++)
+        {
+            if (arreglo[j] > arreglo[i])
+            {
+                aux = arreglo[i];
+                arreglo[i] = arreglo[j];
+                arreglo[j] = aux;
+            }
+        }
+    }
+    Console.WriteLine("Ordenado Ascendentemente:");
+    foreach (int a in arreglo)
+        Console.Write(a + " ");
+
+}
+
+static int[] GenerarArreglo(int cantidad, int inicio = 0, int fin = 100)
+{
+    int[] datos = new int[cantidad];
+    Random valor = new Random();
+    for (int i = 0; i < cantidad; i++)
+    {
+        datos[i] = valor.Next(inicio, fin + 1);
+        Console.Write(datos[i] + " ");
+    }
+    return datos;
+}
+
+static void ArregloMayMenPro(int[] arreglo)
+{
+    Console.WriteLine("\nEl valor mayor: {0}", arreglo.Max());
+    Console.WriteLine("El valor menor: {0}", arreglo.Min());
+    Console.WriteLine("El promedio: {0}", arreglo.Average());
+}
+    </code></pre>
 </body>
 </html>
