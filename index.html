@@ -30,7 +30,7 @@ do
     Console.Write("\n¿Desea salir? [S/n] ");
     respuesta = Console.ReadLine();
 } while (respuesta == "n" || respuesta == "N");</code></pre>
-        <button class="copy-button" onclick="copyCode()" id="copyButton">Copiar código</button>
+        <button class="copy-button" onclick="copyCode1()" id="copyButton1">Copiar código</button>
     </div>
     <p>Realice un programa que solicite la cantidad de notas, solicite cada una de las notas al usuario, pero valide que la nota este entre 0 a 100, luego de que el usuario introduzca todas las notas despliegue el promedio de las notas, la nota menor y la nota mayor.</p>
     <div class="code-container" id="cc2">
@@ -55,11 +55,1209 @@ for (double i = 1; i <= numero; i++)
 Console.WriteLine("El promedio de las {0} notas es {1:F}", numero, promedio / numero);
 Console.WriteLine("La nota menor es " + notaMenor);
 Console.WriteLine("La nota mayor es " + notaMayor);</code></pre>
-        <button class="copy-button" onclick="copyCode1()" id="copyButton1">Copiar código</button>
+        <button class="copy-button" onclick="copyCode2()" id="copyButton2">Copiar código</button>
+    </div>
+    <p>Realice un programa que solicite un numero inicial y final, valide que el número final sea mayor que el inicial, luego recorra desde el numero inicial y final, para realizar la sumatoria de los múltiplos de 3 y paralelamente cuente la cantidad de múltiplos de 5, al terminar el recorrido despliegue la sumatoria de los múltiplos de 3 y la cantidad de múltiplos de 5.</p>
+    <div class="code-container" id="cc3">
+        <pre><code>
+int SumaMultiplo3 = 0, CantidadMultiplo5 = 0, inicial, final;
+
+Console.WriteLine("VALOR DE INCIAL");
+inicial = int.Parse(Console.ReadLine());
+Console.WriteLine("VALOR DE FINAL");
+final = int.Parse(Console.ReadLine());
+
+if (final > inicial)
+{
+    while (inicial <= final)
+    {
+        if (inicial % 3 == 0 || inicial % 5 == 0)
+        {
+            Console.Write("\n{0}", inicial);
+            if (inicial % 3 == 0)
+            {
+                Console.Write(" multiplo de 3");
+                SumaMultiplo3 = SumaMultiplo3 + inicial;
+            }
+
+            if (inicial % 5 == 0)
+            {
+                Console.Write(" multiplo de 5");
+                CantidadMultiplo5 = CantidadMultiplo5 + 1;
+            }
+        }
+        inicial = inicial + 1;
+    }
+    Console.WriteLine("\nSUMA DE MULTIPLOS DE 3: " + SumaMultiplo3);
+    Console.WriteLine("CANTIDAD DE MULTIPLOS DE 5: " + CantidadMultiplo5);
+}
+else
+{
+    Console.WriteLine("EL NUMERO INCIAL DEBE SER MENOR");
+}
+
+
+Console.ReadKey();
+
+        </code></pre>
+        <button class="copy-button" onclick="copyCode3()" id="copyButton3">Copiar código</button>
+    </div>
+    <p>Realice un programa con un MENU iterativo que tenga las siguientes opciones para calcular:
+        <br>1. Área de un Cubo.
+        <br>2. Área de un Cono.
+        <br>3. Área de un Cilindro.
+        <br>4. Área de una Esfera.
+        <br>5. Salir.</p>
+    <div class="code-container" id="cc4">
+        <pre><code>
+// MENU interactivo Area de Cubo, Cono, Cilindro, Esfera, Salir
+double lado = 0, altura = 0, opcion = 0, radio = 0, area = 0;
+while (true)
+{
+    Console.WriteLine("########## MENU ########");
+    Console.WriteLine("1. Area de un Cubo\n2. Area de un Cono\n3. Area de un Cilindro\n4. Area de una Esfera\n5. Salir");
+    Console.WriteLine("################");
+    Console.Write("Introduce un valor entre el 1 al 5? ");
+    opcion = double.Parse(Console.ReadLine());
+    if (opcion == 1)
+    {
+        Console.WriteLine("Introduce el lado del cubo? ");
+        lado = double.Parse(Console.ReadLine());
+        area = 6 * (lado * lado);
+        Console.WriteLine("El Area de un cubo\nA = 6 l²\nA = 6 {0}\nA = {1:F}cm²", lado, area);
+    }
+    else if (opcion == 2)
+    {
+        Console.Write("Introduce el Radio del Cono? ");
+        radio = double.Parse(Console.ReadLine());
+        Console.Write("Introduce la Altura Inclinada del Cono? ");
+        altura = double.Parse(Console.ReadLine());
+        area = Math.PI * radio * (altura + radio);
+        Console.WriteLine("El area del cono\nA = PI·R·(g + R)\nA = PI·{0}·({1} + {0})\nA = {2:F}cm²", radio, altura, area);
+
+    }
+    else if (opcion == 3)
+    {
+        Console.Write("Introduce el Radio del Cilindro? ");
+        radio = double.Parse(Console.ReadLine());
+        Console.Write("Introduce la Altura del Cilindro? ");
+        altura = double.Parse(Console.ReadLine());
+        area = 2 * Math.PI * radio * (altura + radio);
+        Console.WriteLine("El area del cilindro\nA = 2·R·PI·(R+h)\nA = 2·{0}·PI·({0} + {1})\nA = {2:F}cm²", radio, altura, area);
+    }
+    else if (opcion == 4)
+    {
+        Console.Write("Introduce el Radio de la Esfera? ");
+        radio = double.Parse(Console.ReadLine());
+        area = 4 * Math.PI * (radio * radio);
+        Console.WriteLine("El area de una esfera\nA = 4 × R²\nA = 4 × {0}²\nA = {1:F}cm²", radio, area);
+    }
+    else if (opcion == 5)
+        break;
+    else
+        Console.WriteLine("La opcion {0} no es valido solo del 1 al 5 ", opcion);
+    Console.ReadKey();
+    Console.Clear();
+}
+
+        </code></pre>
+        <button class="copy-button" onclick="copyCode4()" id="copyButton4">Copiar código</button>
+    </div>
+    <p>Realice un programa que obtenga un número aleatorio entre el 1 al 50, el usuario tiene 5 intentos para adivinar este número, en cada intento pida un número al usuario si este es menor al que debe adivinar, indique que el número adivinar es mayor o si este fuese mayor indique que el número a adivinar es menor del que acaba de introducir, si el usuario adivina indique que acertó, si se vence los 5 intentos y no adivina indique que perdió y muestre el número aleatorio que debía adivinar.</p>
+    <div class="code-container" id="cc5">
+        <pre><code>
+/*Realice un programa que obtenga un número aleatorio entre el 1 al 50, el usuario tiene 5 
+intentos para adivinar este número, en cada intento pida un número al usuario si este es 
+menor al que debe adivinar, indique que el número adivinar es mayor o si este fuese mayor 
+indique que el número a adivinar es menor del que acaba de introducir, si el usuario adivina 
+indique que acertó, si se vence los 5 intentos y no adivina indique que perdió y muestre el 
+número aleatorio que debía adivinar.*/
+
+int resp = 0;
+do
+{
+    Console.WriteLine("##### INTENTE ADIVINAR EL NUMERO EN 5 INTENTOS #####");
+    int num = 0, cont = 0;
+    Random aleatorio = new Random();
+    int valor = 0;
+    valor = aleatorio.Next(1, 50);
+
+    do
+    {
+        cont++;
+
+
+        Console.WriteLine("cual cree que sea el número?");
+        num = int.Parse(Console.ReadLine());
+        if (num < valor)
+            Console.WriteLine("el número es más alto");
+        else if (num > valor)
+            Console.WriteLine("el número es más bajo");
+
+    }
+    while (cont < 5);
+
+    if (num == valor)
+    {
+        Console.WriteLine("CORECCTO!!!!!");
+        Console.WriteLine("El número es {0}", num);
+    }
+    else
+        Console.WriteLine("INCORRECTO!! LO SENTIMOS NO ADIVINASTE EL NUMERO ERA {0}", valor);
+
+    Console.WriteLine("Quieres intentarlo de nuevo?? 1/0");
+    resp = int.Parse(Console.ReadLine());
+}
+while (resp == 1);
+Console.Write("GRACIAS POR JUGAR!!!");
+        </code></pre>
+        <button class="copy-button" onclick="copyCode5()" id="copyButton5">Copiar código</button>
+    </div>
+    <p>Realice un programa que solicite un numero de posición de la serie Fibonacci, muestre la serie de Fibonacci hasta esa posición</p>
+    <div class="code-container" id="cc6">
+        <pre><code>
+int n, n1, n2, respuesta;
+Console.WriteLine("Numero de posicion de la serie Fibonacci");
+do
+{
+    n1 = 1;
+    n2 = 1;
+    Console.Write("\nCuantos numeros fibonacci desea generar? ");
+    n = int.Parse(Console.ReadLine());
+    if (n == 0)
+        Console.WriteLine("0");
+    else if (n == 1)
+        Console.WriteLine("1");
+    else
+    {
+        Console.Write("0 1 ");
+        for (int i = 3; i <= n; i++)
+        {
+            respuesta = n1 + n2;
+            Console.Write("{0} ", respuesta);
+            n1 = n2;
+            n2 = respuesta;
+        }
+        Console.Write("\n");
+    }
+} while (true);
+ 
+        </code></pre>
+        <button class="copy-button" onclick="copyCode6()" id="copyButton6">Copiar código</button>
+    </div>
+    <p>Realice un programa que solicite un número ‘N’ > 10, identifique y muestre los números primos que se encuentren entre el 10 al número ‘N’.</p>
+    <div class="code-container" id="cc7">
+        <pre><code>
+/*Realice un programa que solicite un número ‘N’ > 10, identifique y muestre los números
+primos que se encuentren entre el 10 al número ‘N’.*/
+
+int num;
+Console.WriteLine("VEAMOS CUANTOS NUMEROS PRIMOS HAY DESDE DEL 10 HASTA TU NUMERO!!!!");
+
+do
+{
+    Console.WriteLine("INSERTE SU NUMERO LIMITE MAYOR A 10");
+    num = int.Parse(Console.ReadLine());
+} while (num < 10);
+Console.WriteLine("los numero primos de 10 hasta el {0} son:", num);
+for (int i = 10; i <= num; i++)
+{
+    if (i % 2 != 0)
+    {
+        if (i % 3 != 0)
+        {
+            if (i % 5 != 0)
+            {
+                if (i % 7 != 0)
+                    Console.WriteLine(i);
+            }
+        }
+    }
+}
+
+        </code></pre>
+        <button class="copy-button" onclick="copyCode7()" id="copyButton7">Copiar código</button>
+    </div>
+    <h2>Ejercios propuestos II</h2>
+    <p>Realice un programa que utilice métodos para realizar un MENU iterativo con las siguientesopciones:
+        <br>1. Factorial de un numero “n”
+        <br>2. Combinaciones sin repetición de ‘’n” tomados de “r”
+        <br>3. Combinaciones con repetición de “n” tomados de “r”
+        <br>4. Salir
+        <br>Tenga en cuenta que todos los valores “n” o “r” son proporcionados por el usuario y utilice las siguientes formulas:
+        <br>• factorial de un número es: 𝑛! = 𝑛 ∗ (𝑛 − 1) ∗ (𝑛 − 2) ∗ … ∗ 2 ∗ 1
+        <br>• combinaciones sin repetición es: 𝐶𝑛,𝑟 = 𝑛! / 𝑟!(𝑛−𝑟)!
+        <br>• combinaciones con repetición es: 𝐶𝑅𝑛,𝑟 = (𝑛+𝑟−1)! / 𝑟!(𝑛−1)!
+        </p>
+    <div class="code-container" id="cc11">
+        <pre><code>
+// Factorial
+
+static int fact(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
+    else if (n < 0)
+        return -1;
+    return n * fact(n - 1);
+}
+
+// Conbinaciones sin repeticion
+
+static int convsin(int n, int r)
+{
+    int convinacion = 0;
+    convinacion = fact(n) / (fact(r) * fact(n - r));
+    return convinacion;
+}
+
+// Conbincaiones con repeticiones
+
+static int convcon(int n, int r)
+{
+    int convinacion = 0;
+    convinacion = fact(n + r - 1) / (fact(r) * fact(n - 1));
+    return convinacion;
+}
+
+// (NESESARIO PARA LAS REPETICIONES)
+
+static void repeticiones(out int n, out int r)
+{
+    n = 0;
+    r = 0;
+    while (n < 1)
+    {
+        Console.Write("introdusca un valor inicial mayor a 0\n");
+        n = int.Parse(Console.ReadLine());
+    }
+    do
+    {
+        Console.Write("introdusca un valor mayor a 0 y menor a {0}\n",n);
+        r = int.Parse(Console.ReadLine());
+    } while (r < 0 || r > n);
+}
+
+// Menu
+
+int op, n1 = 0, r1 = 0, n = 0, res = 0;
+while (true)
+{
+    Console.WriteLine("---------- MENU ----------");
+    Console.WriteLine("1) Factorial de un numero\n2) Convinaciones sin repeticion entre un rango\n3) Convinaciones con repeticion entre un rango\n4) Salir");
+    Console.WriteLine("---------------------------");
+    op = int.Parse(Console.ReadLine());
+    if (op == 1) 
+    {
+        Console.Write("introduce el valor de N\n");
+        n = int.Parse(Console.ReadLine());
+        res = fact(n);
+        if (n == -1)
+            Console.Write("{0}! no existe", n);
+        else
+            Console.WriteLine("{0}! = {1}", n, res);
+    }
+    else if (op == 2)
+    {
+        repeticiones(out n1, out r1);
+        res = convsin(n1, r1);
+        Console.WriteLine("Las conbinaciones sin repeticion desde {0} hasta {1} son {2}", n1, r1, res);
+    }
+    else if (op == 3)
+    {
+        repeticiones(out n1, out r1);
+        res = convcon(n1, r1);
+        Console.WriteLine("Las conbinaciones con repeticion desde {0} hasta {1} son {2}", n1, r1, res);
+    }
+    else if (op == 4)
+    {
+        Console.WriteLine("Hasta la proxima!!!!!");
+        break;
+    }
+    else 
+        Console.WriteLine("la Opcion {0} no forma parte del menu...\nPorfavor elija una opcion entre el 1 al 6",op);
+    Console.ReadKey();
+    Console.Clear();
+}
+        </code></pre>
+        <button class="copy-button" onclick="copyCode11()" id="copyButton11">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice método recursivo para realizar el cálculo del factorial de un número ‘N’, un vez mostrado el cálculo pregunte al usuario si desea salir presione ‘S’ o ‘s’ u otra tecla en caso contrario, si no desea salir vuelva a solicitar el número para nuevamente repetir el cálculo:
+        </p>
+    <div class="code-container" id="cc12">
+        <pre><code>
+//Ejercicio 2
+class program
+{
+    static int factorial(int n)
+    {
+        if (n == 0)
+            return 1;
+        else
+            return n * factorial(n - 1);
+    }
+    static void Main(String[] args)
+    {
+        int n;
+        string salida;
+        do
+        {
+            Console.WriteLine("Ingrese un numero");
+            n = int.Parse(Console.ReadLine());
+            Console.Write("El factorial de " + n + " es: " + factorial(n));
+            Console.Write("\nsi desea cerrar el programa presione la tecla 's/S' \nsi desea contuniar presione cualquier tecla\n");
+            salida = Console.ReadLine();
+
+        } while (!(salida == "s" || salida == "S"));
+    }
+}
+        </code></pre>
+        <button class="copy-button" onclick="copyCode12()" id="copyButton12">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice método recursivo para realizar el cálculo de la serie de Fibonacci hasta una posición ‘N’, una vez mostrada la serie pregunte al usuario si desea salir presione ‘S’ o ‘s’ u otra tecla en caso contrario, si no desea salir vuelva a repetir el proceso de Fibonacci.</p>
+    <div class="code-container" id="cc13">
+        <pre><code>
+//ejercicio 3
+class program
+{
+    static int Fibonasi(int n)
+    {
+        if (n == 1 || n == 0)
+            return n;
+        else
+            return Fibonasi(n - 1) + Fibonasi(n - 2);
+    }
+    static void Main(string[] args)
+    {
+        int n;
+        string salida;
+        do
+        {
+            Console.Write("Ingrese La Posición de la serie que desea llegar: ");
+            n = int.Parse(Console.ReadLine());
+            for (int i = 0; i <= n - 1; i++)
+                Console.WriteLine("fibonacii " + (i + 1) + " es: " + Fibonasi(i + 1) + "\n");
+            Console.Write("si desea cerrar el programa presione la tecla 's/S' \nsi desea contuniar presione cualquier tecla\n");
+            salida = Console.ReadLine();
+        } while (!(salida == "s" || salida == "S"));
+    }
+}
+        </code></pre>
+        <button class="copy-button" onclick="copyCode13()" id="copyButton13">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice métodos para aplicar los siguientes descuentos por cantidades de cualquier producto:
+        <br>• 1 a 10 Unidades 0% de descuento
+        <br>• 11 a 20 Unidades 2% de descuento
+        <br>• 21 a 30 Unidades 4% de descuento
+        <br>• 31 o más unidades 6% de descuento
+        <br>El programa debe calcular el descuento y el precio real a pagar según la cantidad de artículos que quiera llevar el cliente en un menú iterativo con las siguientes opciones:
+        <br>1. Paquete de galletas (5 Bs la unidad)
+        <br>2. Botella de refresco (10 Bs la unidad)
+        <br>3. Salir
+        </p>
+    <div class="code-container" id="cc14">
+        <pre><code>
+menu();
+static void menu()
+{
+    bool estado = true;
+    do
+    {
+        Console.WriteLine("------------------menu------------------\nbienvenido a la tienda hoy no fio mañana si\n          ¿que articulos desea obtener?");
+        Console.WriteLine("1. Paquete de galletas (5 Bs la unidad)\n2. Botella de refresco (10 Bs la unidad)\n3. informacion sobre los descuentos\n4. Salir\n");
+        int op = Convert.ToInt32(Console.ReadLine());
+        switch (op)
+        {
+            case 1:
+                double cangalletas = 0;
+                Console.WriteLine("¿cuantas paquetes de galletas desea comprar?");
+                double pagalletas = Convert.ToInt32(Console.ReadLine());
+                galletas(cangalletas, pagalletas);
+                Console.ReadKey();
+                Console.Clear();
+                break;
+            case 2:
+                double canrefresco = 0;
+                Console.WriteLine("¿cuantas paquetes de refresco desea comprar?");
+                double parefresco = Convert.ToInt32(Console.ReadLine());
+                galletas(canrefresco, parefresco);
+                Console.ReadKey();
+                Console.Clear();
+                break;
+            case 3:
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("informacion de los descuentos\n• 1 a 10 Unidades 0% de descuento\n• 11 a 20 Unidades 2% de descuento\n• 21 a 30 Unidades 4% de descuento\n• 31 o más unidades 6% de descuento");
+                Console.ReadKey();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Gray;
+                break;
+            case 4:
+                Console.WriteLine("que tenga un buen dia hasta luego estimado cliente vuelva pronto");
+                Console.ReadKey();
+                Console.Clear();
+                estado = false;
+                break;
+            default:
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("ERROR solo numeros del 1 - 4 por favor\npresione enter para volver a intentar");
+                Console.ReadKey();
+                Console.Clear();
+                Console.ForegroundColor = ConsoleColor.Gray;
+                break;
+        }
+    } while (estado == true);
+
+}
+static void galletas(double cangalletas, double pagalletas)
+{
+    cangalletas = pagalletas * 5;
+    if (pagalletas >= 11 && pagalletas <= 20)
+    {
+        Console.WriteLine("precio original de galletas " + cangalletas);
+        cangalletas = cangalletas - (cangalletas * 0.02);
+        Console.WriteLine("precio con descuento es " + cangalletas);
+    }
+    if (pagalletas >= 21 && pagalletas <= 30)
+    {
+        Console.WriteLine("precio original de galletas " + cangalletas);
+        cangalletas = cangalletas - (cangalletas * 0.04);
+        Console.WriteLine("precio con descuento es " + cangalletas);
+    }
+    if (pagalletas >= 31)
+    {
+        Console.WriteLine("precio original de galletas " + cangalletas);
+        cangalletas = cangalletas - (cangalletas * 0.06);
+        Console.WriteLine("precio con descuento es " + cangalletas);
+    }
+}
+static void refresco(double canrefresco, double parefresco)
+{
+    canrefresco = parefresco * 10;
+    if (parefresco >= 11 && parefresco <= 20)
+    {
+        Console.WriteLine("precio original de refresco " + canrefresco);
+        canrefresco = canrefresco - (canrefresco * 0.02);
+        Console.WriteLine("precio con descuento es " + canrefresco);
+    }
+    if (parefresco >= 21 && parefresco <= 30)
+    {
+        Console.WriteLine("precio original de refresco " + canrefresco);
+        canrefresco = canrefresco - (canrefresco * 0.04);
+        Console.WriteLine("precio con descuento es " + canrefresco);
+    }
+    if (parefresco >= 31)
+    {
+        Console.WriteLine("precio original de refresco " + canrefresco);
+        canrefresco = canrefresco - (canrefresco * 0.06);
+        Console.WriteLine("precio con descuento es " + canrefresco);
+    }
+}
+        </code></pre>
+        <button class="copy-button" onclick="copyCode14()" id="copyButton14">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice métodos y utilice la clase Math de C# para que sea un menú iterativo con las siguientes opciones:
+        <br>4. 2 Sin (x)
+        <br>5. 3 Tan (x) + 4
+        <br>6. 2 Sin (x) – ( 3 Tan (x) + 4 )
+        <br>7. Salir
+        <br>Nota: debe solicitar el valor de x como ángulo en grados al usuario</p>
+    <div class="code-container" id="cc15">
+        <pre><code>
+static void Angulo(out double x)
+{
+    Console.Write("Introduce el valor x es el angulo en grados? ");
+    x = double.Parse(Console.ReadLine());
+}
+static void Eleccion1(double x)
+{
+    double resultado = 2 * (Math.Sin(x));
+    Console.WriteLine("\n2 Sin (x) = {0:F}", resultado);
+}
+static void Eleccion2(double x)
+{
+    double resultado = 3 * (Math.Tan(x)) + 4;
+    Console.WriteLine("\n3 Tan (x) + 4 = {0:F}", resultado);
+}
+static void Eleccion3(double x)
+{
+    double resultado1 = 2 * (Math.Sin(x));
+    double resultado2 = 3 * (Math.Tan(x)) + 4;
+    Console.WriteLine("\n2 Sin (x) – ( 3 Tan (x) + 4 ) = {0}", resultado1 - resultado2);
+}
+
+// Programa principal
+while (true)
+{
+    double opcion = 0, x = 0;
+    Console.Write("****************** MENU ******************\n1. 2 Sin (x)\n2. 3 Tan (x) + 4\n3. 2 Sin (x) – ( 3 Tan (x) + 4 )\n4. Salir\n******************************************\nIntroduce una opcion entre el 1 al 4 ? ");
+    opcion = double.Parse(Console.ReadLine());
+    if (opcion == 1)
+    {
+        Angulo(out x);
+        Eleccion1(x);
+    }
+    else if (opcion == 2)
+    {
+        Angulo(out x);
+        Eleccion2(x);
+    }
+    else if (opcion == 3)
+    {
+        Angulo(out x);
+        Eleccion3(x);
+    }
+    else if (opcion == 4)
+    {
+        Console.WriteLine("Hasta luego...");
+        break;
+    }
+    else
+        Console.WriteLine("Opcion {0} no valida solo del 1 al 4...", opcion);
+    Console.ReadKey();
+    Console.Clear();
+}
+
+        </code></pre>
+        <button class="copy-button" onclick="copyCode15()" id="copyButton15">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice métodos y utilice la clase Math de C# para que sea un menú iterativo con las siguientes opciones:
+        <br>1. 5 Log (x)
+        <br>2. 3 Log10(x) + 4
+        <br>3. 5 Log (x) – ( 3 Log10(x) + 4 )
+        <br>4. Salir
+        <br>Nota: debe solicitar el valor de x al usuario</p>
+    <div class="code-container" id="cc15a">
+        <pre><code>
+//Ejercicio 5 (2)
+static int Menu(string mensaje, int inicial, int final)
+{
+    int opcion;
+    do
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("<<<<<<<<<<<<<< MENU >>>>>>>>>>>>>>>>");
+        Console.WriteLine(mensaje);
+        Console.WriteLine("Introduzca una opcion entre el {0} al {1}", inicial, final);
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        opcion = int.Parse(Console.ReadLine());
+        if (opcion < inicial || opcion > final)
+        {
+            Console.WriteLine("La opcion debe estar entre {0} al {1}");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        else
+            break;
+    } while (true);
+    return opcion;
+}
+static void ObtenerRango(out int inicio, out int fin)
+{
+    Console.Write("Introduce un valor inicial para el rango x: ");
+    inicio = int.Parse(Console.ReadLine());
+    do
+    {
+        Console.Write("Introduce un valr final > {0} para el rango final de x: ", inicio);
+        fin = int.Parse(Console.ReadLine());
+    } while (inicio >= fin);
+}
+
+static void caso1(int Xinicial, int Xfinal)
+{
+    double y;
+    for (int x = Xinicial; x <= Xfinal; x++)
+    {
+        y = 5 * Math.Log(x);
+        Console.WriteLine("P[{0},{1}]", x, y);
+    }
+}
+static void caso2(int Xinicial, int Xfinal)
+{
+    double y;
+    for (int x = Xinicial; x <= Xfinal; x++)
+    {
+        y = 3 * Math.Log10(x) + 4;
+        Console.WriteLine("P[{0},{1}]", x, y);
+    }
+}
+static void caso3(int Xinicial, int Xfinal)
+{
+    double y;
+    for (int x = Xinicial; x <= Xfinal; x++)
+    {
+        y = 5 * Math.Log(x) - (3 * Math.Log10(x) + 4);
+        Console.WriteLine("P[{0},{1}]", x, y);
+    }
+}
+//Programa principal 
+string mensaje = "1) 5 Log (x) \n2) 3 Log10(x) + 4 \n3) 5 Log (x) – ( 3 Log10(x) + 4 ) \n4)Salir";
+int opcion = 0, x1 = 0, x2 = 0;
+do
+{
+    opcion = Menu(mensaje, 1, 4);
+    if (opcion == 1)
+    {
+        ObtenerRango(out x1, out x2);
+        caso1(x1, x2);
+    }
+    else if (opcion == 2)
+    {
+        ObtenerRango(out x1, out x2);
+        caso2(x1, x2);
+    }
+    else if (opcion == 3)
+    {
+        ObtenerRango(out x1, out x2);
+        caso3(x1, x2);
+    }
+
+    else
+    {
+        Console.WriteLine("Hastaluego.....");
+        break;
+    }
+} while (true);
+
+        </code></pre>
+        <button class="copy-button" onclick="copyCode15a()" id="copyButton15a">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice métodos y utilice la clase Math de C# para que sea un menú iterativo con las siguientes opciones:
+        <br>1. 5 Sin (x)
+        <br>2. 3 Log10(x) + 4
+        <br>3. 5 Log (x) – ( 3 Log10(x) + 4 )
+        <br>4. Salir
+        </p>
+    <div class="code-container" id="cc16">
+        <pre><code>
+//Ejercicio6
+static int Menu(string mensaje, int inicial, int final)
+{
+    int opcion;
+    do
+    {
+        Console.ForegroundColor = ConsoleColor.DarkGreen;
+        Console.WriteLine("<<<<<<<<<<<<<< MENU >>>>>>>>>>>>>>>>");
+        Console.WriteLine(mensaje);
+        Console.WriteLine("Introduzca una opcion entre el {0} al {1}", inicial, final);
+        Console.ForegroundColor = ConsoleColor.DarkYellow;
+        opcion = int.Parse(Console.ReadLine());
+        if (opcion < inicial || opcion > final)
+        {
+            Console.WriteLine("La opcion debe estar entre {0} al {1}");
+            Console.ReadKey();
+            Console.Clear();
+        }
+        else
+            break;
+    } while (true);
+    return opcion;
+}
+static void ObtenerRango(out int inicio, out int fin)
+{
+    Console.ForegroundColor = ConsoleColor.DarkRed;
+    Console.Write("Introduce un valor inicial para el rango x: ");
+    inicio = int.Parse(Console.ReadLine());
+    do
+    {
+        Console.Write("Introduce un valr final > {0} para el rango final de x: ", inicio);
+        fin = int.Parse(Console.ReadLine());
+    } while (inicio >= fin);
+}
+
+static void caso1(int Xinicial, int Xfinal)
+{
+    double y;
+    for (int x = Xinicial; x <= Xfinal; x++)
+    {
+        y = 5 * Math.Sin(x);
+        Console.WriteLine("P[{0},{1}]", x, y);
+    }
+}
+static void caso2(int Xinicial, int Xfinal)
+{
+    double y;
+    for (int x = Xinicial; x <= Xfinal; x++)
+    {
+        y = 3 * Math.Log10(x) + 4;
+        Console.WriteLine("P[{0},{1}]", x, y);
+    }
+}
+static void caso3(int Xinicial, int Xfinal)
+{
+    double y;
+    for (int x = Xinicial; x <= Xfinal; x++)
+    {
+        y = 5 * Math.Log(x) - (3 * Math.Log10(x) + 4);
+        Console.WriteLine("P[{0},{1}]", x, y);
+    }
+}
+//Programa principal 
+string mensaje = "1) 5 Sin (x) \n2) 3 Log10(x) + 4 \n3) 5 Log (x) – ( 3 Log10(x) + 4 ) \n4)Salir";
+int opcion = 0, x1 = 0, x2 = 0;
+do
+{
+    opcion = Menu(mensaje, 1, 4);
+    if (opcion == 1)
+    {
+        ObtenerRango(out x1, out x2);
+        caso1(x1, x2);
+    }
+    else if (opcion == 2)
+    {
+        ObtenerRango(out x1, out x2);
+        caso2(x1, x2);
+    }
+    else if (opcion == 3)
+    {
+        ObtenerRango(out x1, out x2);
+        caso3(x1, x2);
+    }
+
+    else
+    {
+        Console.WriteLine("Hastaluego.....");
+        break;
+    }
+} while (true);
+        </code></pre>
+        <button class="copy-button" onclick="copyCode16()" id="copyButton16">Copiar código</button>
+    </div>
+    <p>Realice un programa que utilice métodos para aplicar los siguientes descuentos por cantidades de cualquier producto:
+        <br>• 1 a 20 Unidades 1.5 % de descuento
+        <br>• 21 a 40 Unidades 2.1 % de descuento
+        <br>• 41 a 50 Unidades 3.0 % de descuento
+        <br>• 51 o más unidades 4 % de descuento
+        <br>El programa debe calcular el descuento y el precio real a pagar según la cantidad de artículos que quiera llevar el cliente en un menú iterativo con las siguientes opciones:
+        <br>1. Paquete de cigarrillos (10 Bs la unidad)
+        <br>2. Botella de vino (18 Bs la unidad)
+        <br>3. Salir</p>
+    <div class="code-container" id="cc17">
+        <pre><code>
+//si elije la opcion 1 se realiza la siguiente operacion
+static void Cigarrillos(int cantidad)
+{
+    double descuento = 0, monto = 0, total = 0;
+    Console.WriteLine("ingrese la cantidad de cigarrilos que esta vendiendo");
+    cantidad = int.Parse(Console.ReadLine());
+    monto = 10 * cantidad;
+    if (cantidad <= 0)
+
+        Console.WriteLine("no realizo ninguna venta");
+
+    else if (cantidad > 0 && cantidad < 21)
+
+        descuento = 0.015 * monto;//1.5/100=0.015
+
+    else if (cantidad > 20 && cantidad < 41)
+
+        descuento = 0.021 * monto;//2.1/100=0.021
+
+    else if (cantidad > 40 && cantidad < 51)
+
+        descuento = 0.03 * monto;//3.0/100=0.03
+
+    else if (cantidad > 50)
+
+        descuento = 0.04 * monto;//4.0/100=0.04
+
+    total = monto - descuento;
+    Console.WriteLine("\n" + "Monto: {0}bs\nEl Total a Pagar es: {1:F}bs\ny el descuento fue: {2:F}bs", monto, total, descuento);
+}
+//si elije la opcion 2 realizamos la siguiente operacion
+static void Vinos(int cantidad)
+{
+    double descuento = 0, monto = 0, total = 0;
+    Console.WriteLine("ingrese la cantidad de cigarrilos que esta vendiendo");
+    cantidad = int.Parse(Console.ReadLine());
+    monto = 18 * cantidad;
+    if (cantidad <= 0)
+
+        Console.WriteLine("no realizo ninguna venta");
+
+    else if (cantidad > 0 && cantidad < 21)
+
+        descuento = 0.015 * monto;//1.5/100=0.015
+
+    else if (cantidad > 20 && cantidad < 41)
+
+        descuento = 0.021 * monto;//2.1/100=0.021
+
+    else if (cantidad > 40 && cantidad < 51)
+
+        descuento = 0.03 * monto;//3.0/100=0.03
+
+    else if (cantidad > 50)
+
+        descuento = 0.04 * monto;//4.0/100=0.04
+
+    total = monto - descuento;
+    Console.WriteLine("\n" + "Monto: {0}bs\nEl Total a Pagar es: {1:F}bs\ny el descuento fue: {2:F}bs", monto, total, descuento);
+}
+
+//programa principal
+int opcion = 0;
+int x1 = 0, x2 = 0;
+string menu = "1)Paquetes de cigarrillos \n2)Botella de vino \n3)Salir";
+while (true)
+{
+    Console.WriteLine("#######__Menú__#######\n" + menu + "\n##################");
+    Console.Write("Introuce una Opcion entre el 1 y el 3 : ");
+    opcion = int.Parse(Console.ReadLine());
+    if (opcion == 1)
+    {
+        Cigarrillos(x1);
+    }
+    else if (opcion == 2)
+    {
+        Vinos(x1);
+    }
+    else if (opcion == 3)
+    {
+        Console.WriteLine("fin del programa");
+        break;
+    }
+    else
+        Console.WriteLine("Opcion {0} no valida solo del 1 al 3", opcion);
+
+    Console.ReadKey();
+    Console.Clear();
+}
+        </code></pre>
+        <button class="copy-button" onclick="copyCode17()" id="copyButton17">Copiar código</button>
+    </div>
+    <h2>Ejercios propuestos III</h2>
+    <p>Escriba un programa que utilice métodos y Sting para realizar un MENU iterativo con las siguientes opciones:
+        <br>1. Solicitar un texto y un subtexto para indicar los índices donde aparece el subtexto
+        <br>2. Solicitar un texto y un subtexto para indicar cuantas veces aparece el subtexto
+        <br>3. Solicitar un texto e indicar la cantidad de letras, minúsculas y mayúsculas
+        <br>4. Solicitar un texto e indicar la cantidad de espacios en blanco, vocales en minúsculas y en mayúsculas
+        <br>5. Solicitar un texto e insertar un subtexto en un índice valido del texto
+        <br>6. Solicitar un texto y desplegar el texto pero sin vocales (mayúsculas o minúsculas)
+        <br>7. Salir
+        </p>
+    <div class="code-container" id="cc21">
+        <pre><code>
+//1. Solicitar un texto y un subtexto para indicar los índices donde aparece el subtexto
+//2.Solicitar un texto y un subtexto para indicar cuantas veces aparece el subtexto
+//3. Solicitar un texto e indicar la cantidad de letras, minúsculas y mayúsculas
+//4. Solicitar un texto e indicar la cantidad de espacios en blanco, vocales en minúsculas y en mayúsculas
+//5. Solicitar un texto e insertar un subtexto en un índice valido del texto
+//6. Solicitar un texto y desplegar el texto pero sin vocales (mayúsculas o minúsculas)
+//7.Salir
+//trabajo 7
+
+static int SoloNumero(string Mensaje)
+{
+    int n = 0;
+    Console.WriteLine(Mensaje);
+    do
+    {
+        try
+        {
+            n = int.Parse(Console.ReadLine());
+        }
+        catch
+        {
+            Console.WriteLine("Debe ingresar solo numeros: ");
+        }
+        break;
+    } while (true);
+    return n;
+}
+//PROGRAMA PRINCIPAL
+int opcion = 0;
+do
+{
+    string Menu, mensaje = String.Empty, contenidoActual = String.Empty, contenidoNuevo = String.Empty;
+    int longitud = 0, posicion, cantidadvoc = 0, cantidadcaracter = 0, cantidadnum = 0, cantidadspace = 0, cantidadotros = 0;
+    Menu = "1)Introducir texto y un subtexto para indicar los índices donde aparece el subtexto\n2)Solicitar un texto y un subtexto para indicar cuantas veces aparece el subtexto\n3)Solicitar un texto e indicar la cantidad de letras, minúsculas y mayúsculas\n4)Solicitar un texto e indicar la cantidad de espacios en blanco, vocales en minúsculas y en\r\nmayúsculas\n5)Solicitar un texto e insertar un subtexto en un índice valido del texto\n6)Solicitar un texto y desplegar el texto pero sin vocales (mayúsculas o minúsculas)\n7)Salir";
+    Console.WriteLine("+++++++++++++++++++++++++++Menu+++++++++++++++++++++++++++\n" + Menu + "+++++++++++++++++++++++++++++++++++++++++++++++++++");
+    Console.WriteLine("Introduce una opcion: ");
+    opcion = SoloNumero("Introduce una opcion entre el 1 y 8");
+    if (opcion > 0 && opcion < 7)
+    {
+        Console.WriteLine("Introduce un Texto cualquiera: ");
+        mensaje = Console.ReadLine();
+        longitud = mensaje.Length;
+    }
+    if (opcion == 1)
+    {
+        Console.WriteLine("El texto es:\n{0}\nIntroduce un texto a buscar", mensaje);
+        contenidoActual = Console.ReadLine();
+        if (mensaje.Contains(contenidoActual))
+        {
+            cantidadvoc = mensaje.IndexOf(contenidoActual);
+            while (cantidadvoc != -1)
+            {
+                Console.WriteLine("Aparece en el indice {0} o la posicion {1}", cantidadvoc, cantidadvoc + 1);
+                cantidadvoc = mensaje.IndexOf(contenidoActual, cantidadvoc + 1);
+            }
+        }
+        else
+        {
+            Console.WriteLine("No existe el subtexto");
+        }
+    }
+    else if (opcion == 2)
+    {
+        Console.WriteLine("El texto es:\n{0}\nIntroduce un texto a buscar", mensaje);
+        contenidoActual = Console.ReadLine();
+        if (longitud >= 0)
+        {
+            cantidadvoc = mensaje.IndexOf(contenidoActual);
+            while (cantidadvoc >= 0)
+            {
+                cantidadvoc = mensaje.IndexOf(contenidoActual, cantidadvoc + contenidoActual.Length);
+                cantidadcaracter++;
+            }
+        }
+        else
+        {
+            Console.WriteLine("No existe el subtexto");
+            continue;
+        }
+        Console.WriteLine("Existen {0} del subtexto {1}", cantidadcaracter, contenidoActual);
+    }
+    else if (opcion == 3)
+    {
+        foreach (char caracter in mensaje)
+        {
+            if (char.IsLower(caracter))
+                cantidadnum++;
+            else if (char.IsUpper(caracter))
+                cantidadcaracter++;
+        }
+        Console.WriteLine("Letras Minusculas : {0}\nLetras Mayusculas: {1}", cantidadnum, cantidadcaracter);
+
+    }
+    else if (opcion == 4)
+    {
+        Console.WriteLine("El texto \n{0}\ntiene las siguientes caracteres", mensaje);
+        foreach (char caracter in mensaje)
+        {
+            if (caracter == 'a' || caracter == 'e' || caracter == 'i' || caracter == 'o' || caracter == 'u')
+                cantidadvoc++;
+            else if (caracter == 'A' || caracter == 'E' || caracter == 'I' || caracter == 'O' || caracter == 'U')
+                cantidadcaracter++;
+            else if (char.IsWhiteSpace(caracter))
+                cantidadspace++;
+        }
+        Console.WriteLine("vocales minusculas: {0}\nvocales MAYUSCULAS:{1}\ncaracteres de espacio:{2}", cantidadvoc, cantidadcaracter, cantidadspace);
+    }
+    else if (opcion == 5)
+    {
+        Console.WriteLine("El texto es:\n{0}\nIntrodusca la posicion en el mensaje: ", mensaje);
+        posicion = int.Parse(Console.ReadLine());
+        try
+        {
+            Console.WriteLine("Introduce el subtexto al insertar en la posicion:{0}......", posicion);
+            contenidoNuevo = Console.ReadLine();
+            contenidoActual = mensaje.Insert(posicion - 1, contenidoNuevo);
+            Console.WriteLine("El mensaje resultante es:\n{0}", contenidoActual);
+        }
+        catch
+        {
+            Console.WriteLine("No se almacena ningun caracter en la posicion {0}....", posicion);
+        }
+    }
+    else if (opcion == 6)
+    {
+        Console.WriteLine("El texto es:\n{0}\nEl texto sin vocales:", mensaje);
+        foreach (char caracter in mensaje)
+        {
+            if (caracter != 'a')
+            {
+                if (caracter != 'e')
+                {
+                    if (caracter != 'i')
+                    {
+                        if (caracter != 'o')
+                        {
+                            if (caracter != 'u')
+                            {
+                                if (caracter != 'A')
+                                {
+                                    if (caracter != 'E')
+                                    {
+                                        if (caracter != 'I')
+                                        {
+                                            if (caracter != 'O')
+                                            {
+                                                if (caracter != 'U')
+                                                    Console.Write(caracter);
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    else if (opcion == 7)
+        Console.WriteLine("hasta luego....");
+    else
+        Console.WriteLine("opcion {0} no valida", opcion);
+    Console.ReadKey();
+    Console.Clear();
+} while (opcion != 7);
+
+        </code></pre>
+        <button class="copy-button" onclick="copyCode21()" id="copyButton21">Copiar código</button>
+    </div>
+    <p>Escriba un programa que utilice métodos y arreglos para realizar un MENU iterativo con las siguientes opciones:
+        <br>1. Generación de arreglo con 10 números aleatorios (entre el -20 al 20)
+        <br>2. Ordenación descendente (mayor a menor)
+        <br>3. Ordenación ascendente (menor a mayor)
+        <br>4. Valor más grande
+        <br>5. Valor más pequeño
+        <br>6. Promedio de valores
+        <br>7. Salir</p>
+    <div class="code-container" id="cc22">
+        <pre><code>
+/* Ejercicio #2
+Escriba un programa que utilice métodos y arreglos para realizar un MENU iterativo con las
+siguientes opciones:
+1.Generación de arreglo con 10 números aleatorios (entre el -20 al 20)
+2.Ordenación descendente(mayor a menor)
+3.Ordenación ascendente(menor a mayor)
+4.Valor más grande
+5. Valor más pequeño
+6. Promedio de valores
+7. Salir*/
+
+static int Solonumeros(string mensaje)
+{
+    int n = 0;
+    Console.Write(mensaje);
+    do
+    {
+        try
+        {
+            n = int.Parse(Console.ReadLine());
+        }
+        catch
+        {
+            Console.WriteLine("Solo debe ingresar numeros...");
+            continue;
+        }
+        return n;
+    } while (true);
+}
+static int[] ArregloAscendente(int[] datos)
+{
+    int auxiliar;
+    for (int i = 0; i < datos.Length; i++)
+    {
+        for (int j = i; j < datos.Length; j++)
+        {
+            if (datos[j] < datos[i])
+            {
+                auxiliar = datos[j];
+                datos[j] = datos[i];
+                datos[i] = auxiliar;
+            }
+        }
+    }
+    return datos;
+}
+static int[] ArregloDescendente(int[] datos)
+{
+    int auxiliar;
+    for (int i = 0; i < datos.Length; i++)
+    {
+        for (int j = i; j < datos.Length; j++)
+        {
+            if (datos[j] > datos[i])
+            {
+                auxiliar = datos[j];
+                datos[j] = datos[i];
+                datos[i] = auxiliar;
+            }
+        }
+    }
+    return datos;
+}
+static int[] obtenerarreglo(int cantidad = 10, int inicio = -20, int fin = 20)
+{
+    Random valor = new Random();
+    int[] arreglo = new int[cantidad];
+    for (int i = 0; i < arreglo.Length; i++)
+    {
+        arreglo[i] = valor.Next(inicio, fin + 1);
+        Console.WriteLine("Nro {0} = {1}", i + 1, arreglo[i]);
+    }
+    return arreglo;
+}
+static void MostrarArreglo(int[] datos)
+{
+    foreach (int dato in datos)
+        Console.Write(dato + " ");
+}
+//Programa PRincipal
+string Menu = "1)Mostrar Generación de arreglo con 10 números aleatorios (entre el -20 al 20)\n2)Orden ascendente\n3)Orden descendente\n4)Valor más grande\n5)Valor más pequeño\n6)Promedio de valores\n7)Salir";
+int opcion = 0, cantidad = 0;
+do
+{
+    cantidad = 10;
+} while (cantidad < 1);
+int[] x = new int[cantidad];
+int[] y = new int[cantidad];
+x = obtenerarreglo(cantidad, -10);
+do
+{
+    Console.WriteLine("&&&&&&&&&&&&&&& ARREGLOS &&&&&&&&&&&&&&&&\n" + Menu + "\n&&&&&&&&&&&&&&&&&&&&&&&&&&");
+    opcion = Solonumeros("introduce una opcion: ");
+    if (opcion == 1)
+    {
+        MostrarArreglo(x);
+    }
+    else if (opcion == 2)
+    {
+        x.CopyTo(y, 0);
+        y = ArregloAscendente(y);
+        MostrarArreglo(x);
+        Console.WriteLine("Arreglo ordenado");
+        MostrarArreglo(y);
+    }
+    else if (opcion == 3)
+    {
+        x.CopyTo(y, 0);
+        y = ArregloDescendente(y);
+        MostrarArreglo(x);
+        Console.WriteLine("Arreglo ordenado");
+        MostrarArreglo(y);
+    }
+    else if (opcion == 4)
+    {
+        MostrarArreglo(x);
+        Console.WriteLine("\nEl valor mas grande es: {0}", x.Max());
+    }
+    else if (opcion == 5)
+    {
+        MostrarArreglo(x);
+        Console.WriteLine("\nEl valor mas pequeño es: {0}", x.Min());
+    }
+    else if (opcion == 6)
+    {
+        MostrarArreglo(x);
+        Console.WriteLine("\nEl promedio de los valores es: {0}", x.Average());
+    }
+    else if (opcion == 7)
+        Console.WriteLine("hasta luego....");
+    else
+        Console.WriteLine("opcion {0} no valida", opcion);
+    Console.ReadKey();
+    Console.Clear();
+} while (opcion != 7);
+        </code></pre>
+        <button class="copy-button" onclick="copyCode22()" id="copyButton22">Copiar código</button>
     </div>
     <script>        
-        function copyCode() {
-            var code = document.querySelector(".code-container code");
+        function copyCode1() {
+            var code = document.getElementById("cc1");
             var range = document.createRange();
             range.selectNode(code);
             window.getSelection().removeAllRanges();
@@ -67,7 +1265,7 @@ Console.WriteLine("La nota mayor es " + notaMayor);</code></pre>
             document.execCommand("copy");
             window.getSelection().removeAllRanges();
 
-            var button = document.getElementById("copyButton");
+            var button = document.getElementById("copyButton1");
             button.textContent = "Copiado";
             button.classList.add("copied");
             setTimeout(function() {
@@ -75,7 +1273,7 @@ Console.WriteLine("La nota mayor es " + notaMayor);</code></pre>
                 button.classList.remove("copied");
             }, 2000);
         }
-        function copyCode1() {
+        function copyCode2() {
 			var code = document.getElementById("cc2");
 			var range = document.createRange();
 			range.selectNode(code);
@@ -84,7 +1282,262 @@ Console.WriteLine("La nota mayor es " + notaMayor);</code></pre>
 			document.execCommand("copy");
 			window.getSelection().removeAllRanges();
 
-            var button = document.getElementById("copyButton1");
+            var button = document.getElementById("copyButton2");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode3() {
+			var code = document.getElementById("cc3");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton3");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode4() {
+			var code = document.getElementById("cc4");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton4");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode5() {
+			var code = document.getElementById("cc5");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton5");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode6() {
+			var code = document.getElementById("cc6");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton6");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode7() {
+			var code = document.getElementById("cc7");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton7");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode11() {
+			var code = document.getElementById("cc11");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton11");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode12() {
+			var code = document.getElementById("cc12");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton12");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode13() {
+			var code = document.getElementById("cc13");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton13");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode14() {
+			var code = document.getElementById("cc14");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton14");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode15() {
+			var code = document.getElementById("cc15");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton15");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode15a() {
+			var code = document.getElementById("cc15a");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton15a");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode16() {
+			var code = document.getElementById("cc16");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton16");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode17() {
+			var code = document.getElementById("cc17");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton17");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode21() {
+			var code = document.getElementById("cc21");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton21");
+			button.textContent = "Copiado";
+			button.classList.add("copied");
+			setTimeout(function() {
+				button.textContent = "Copiar código";
+				button.classList.remove("copied");
+			}, 2000);
+        }
+        function copyCode22() {
+			var code = document.getElementById("cc22");
+			var range = document.createRange();
+			range.selectNode(code);
+			window.getSelection().removeAllRanges();
+			window.getSelection().addRange(range);
+			document.execCommand("copy");
+			window.getSelection().removeAllRanges();
+
+            var button = document.getElementById("copyButton22");
 			button.textContent = "Copiado";
 			button.classList.add("copied");
 			setTimeout(function() {
