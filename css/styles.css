@@ -1,27 +1,111 @@
-@import url('https://fonts.googleapis.com/css2?family=Acme&family=Roboto+Mono&display=swap');
-
 body {
-    font-family: 'Acme', sans-serif;
-    font-family: 'Roboto Mono', monospace;
-    background: #1d1d1d;
-    color: #ffffff;
-    margin: 3%;
+    background-color: #1e1e1e;
+    color: #fff;
+    font-family: "Segoe UI", sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
 }
 
-h1 {
-    color: #00ffaa;
-    font-size: 50px;
+h1, h2 {
+    color: #fff;
+    text-align: center;
 }
 
 h2 {
-    color: #ffae00;
-    font-size: 25px;
+    color: #ffa500;
+    margin-top: 0;
 }
 
 p {
-    font-size: 15px;
+    color: #00ffaa;
+    padding-top: 50px;
+    padding-left: 40px;
+    padding-right: 40px;
 }
 
-code {
-    font-size: 17px;
+.code-container {
+    background-color: #222;
+    border: 1px solid #444;
+    border-radius: 5px;
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    position: relative;
+}
+
+.code-container pre {
+    margin: 0;
+    overflow: auto;
+    padding: 0;
+    tab-size: 4;
+    white-space: pre;
+    word-wrap: normal;
+}
+
+.copy-button {
+    background-color: #444;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 10px;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.copy-button:hover {
+    background-color: #666;
+}
+
+button:hover {
+    cursor: pointer;
+  }
+
+button {
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+}
+
+button.copied {
+    background-color: #8bc34a;
+    animation: pulse 1s ease;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(139, 195, 74, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(139, 195, 74, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(139, 195, 74, 0);
+    }
+}
+
+
+/* Estilo para las palabras clave */
+.keyword {
+	color: blue;
+	font-weight: bold;
+}
+
+/* Estilo para los comentarios */
+.comment {
+	color: green;
+    font-style: italic;
+}
+
+/* Estilo para las cadenas de texto */
+.string {
+	color: red;
 }
